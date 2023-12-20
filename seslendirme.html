@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <textarea placeholder="Metni Daxil Edin..."></textarea>
+        <button>Seslendir</button>
+    </div>
+
+    <script>
+        let button = document.querySelector('button');
+
+        let text = document.querySelector('textarea');
+
+        button.addEventListener('click', () => {
+            let talk = new SpeechSynthesisUtterance(text.value)
+            speechSynthesis.speak(talk);
+        })
+        
+        document.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                let talk = new SpeechSynthesisUtterance(text.value)
+                speechSynthesis.speak(talk);
+                event.preventDefault();
+
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
